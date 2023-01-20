@@ -1,0 +1,47 @@
+.App {
+    text-align: center;
+}
+.App-body {
+        background-color: #79A398;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        font-size: calc(10px + 2vmin);
+        color: white;
+
+}
+.Container {
+    width: 80%;
+    height:100%;
+    border-radius: 20px;
+    background-image: url('./landingpage.jpg');
+    background-size: cover;
+    margin: 3em;
+    padding: 10px;
+}
+
+.Container-header {
+    position: relative;
+    top: 0;
+    border-bottom: 2px, solid,#79A398 ;
+    text-align: right;
+    
+}
+.Container-header a {
+    text-decoration: none;
+    color: white;
+}
+.Container-header label {
+    margin: 10px;
+    padding: 5px;
+    background-color: #ae7d01;
+    border-radius: 10px;
+    font-weight: lighter;
+    font-size: 18px;
+}
+.Container-body{
+    padding: 10px;
+    
+}
