@@ -1,0 +1,53 @@
+.Container{
+    width: auto;
+    
+}
+.nav{
+    background-color: #79A398;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.nav label{
+    font-size: 19px;
+    width: 90%;
+}
+.navbar{
+    width: 100%;
+}
+.navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+    float: right;
+    margin: 5px;
+    padding: 2px;
+}
+.navbar label{
+    display: inline;
+    margin: 5px ;
+    padding: 5px;
+}
+.navbar li {
+   float: left;
+   background-color: #79A398;
+   margin: 3px;
+    padding: 5px;
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+    margin: 2px;
+    font-size: 20px;
+}
+.body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-size: cover;
+    /* background-image: url('./homeback.jpg'); */
+    height: 800px;
+}

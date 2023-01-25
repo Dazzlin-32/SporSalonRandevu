@@ -1,17 +1,28 @@
 import './Login.css'
 import { useFormik } from 'formik';
 import SignUpSchema from '../validationSchema';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const userdata = {
+        email : "user@gmail.com",
+        password: "123443",
+    }
     const {handleChange, handleSubmit, values ,errors, touched} = useFormik({
         initialValues: {
             email: "",
             password:"",
         },
         onSubmit : values=>{
-            alert("The values are "+ values.email +" and " + values.password)
+             if (values.email=== userdata.email && values.password === userdata.password ){
+               navigate('/userhome')
+             }
+             else
+                alert("User email or password not correct")
+            
         },
-        validationSchema: {SignUpSchema},
+        // validationSchema: {SignUpSchema},
     })
     return ( 
         <div className="container">
@@ -22,7 +33,6 @@ const Login = () => {
                 <div className="logo">
                     XYZ Sport Salon 
                 </div>
-                <br />
                 <br />
                 <div className="loginText">
                     <h3>Login</h3>
@@ -47,6 +57,7 @@ const Login = () => {
                          onChange={handleChange}
                          value = {values.password} />
                     <a href=''>Forgot Password?</a>
+                    <br />
                     <button
                     >Login</button>
                 </form>

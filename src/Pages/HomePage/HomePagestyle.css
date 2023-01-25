@@ -14,9 +14,9 @@
 }
 .Container {
     width: 80%;
-    height:100%;
+    height:60%;
     border-radius: 20px;
-    background-image: url('./landingpage.jpg');
+    background-image: url('homapagepic.jpg');
     background-size: cover;
     margin: 3em;
     padding: 10px;
@@ -29,19 +29,36 @@
     text-align: right;
     
 }
-.Container-header a {
-    text-decoration: none;
+.Container-header button {
+    margin: 2px;
+    background-color: #dfa000e1;
+    border: 0px;
+    border-radius: 2px;
     color: white;
-}
-.Container-header label {
-    margin: 10px;
-    padding: 5px;
-    background-color: #ae7d01;
-    border-radius: 10px;
-    font-weight: lighter;
-    font-size: 18px;
+    height: 35px;
+    padding: 10px;
 }
 .Container-body{
     padding: 10px;
+    text-align: center;
     
+}
+.Container-body{
+ color: wheat;
+}
+.Container-body p{
+    color: wheat;
+    font-size: 18px;
+    
+    width: max-content;
+}
+
+.Container-body button {
+    background-color: #DFA100;
+    border: 0px;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    padding: 10px;
 }
