@@ -1,0 +1,33 @@
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: url('/src/Pages/UserHomePage/homeback.jpg');
+    background-size: cover;
+}
+.container{
+    background-color: rgba(255, 255, 255, 0.603);
+    width:50%;
+    height: 100%;
+    margin: 30px 30px 60px 30px;
+    padding: 10px;
+    text-align: center;
+    box-shadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+}
+.profile p{
+    font-size: 23px;
+    text-align: left;
+}
+.circle{
+    background-color: #f3eded;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    top: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}

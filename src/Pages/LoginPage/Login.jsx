@@ -1,26 +1,34 @@
 import './Login.css'
+import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
-import SignUpSchema from '../validationSchema';
 import { useNavigate } from 'react-router-dom';
+import {data} from '../../userapi'
 
 const Login = () => {
     const navigate = useNavigate();
-    const userdata = {
-        email : "user@gmail.com",
-        password: "123443",
-    }
+    
+    let user;
     const {handleChange, handleSubmit, values ,errors, touched} = useFormik({
         initialValues: {
             email: "",
             password:"",
         },
         onSubmit : values=>{
-             if (values.email=== userdata.email && values.password === userdata.password ){
-               navigate('/userhome')
-             }
-             else
-                alert("User email or password not correct")
             
+            try{
+                user = data.find(data => data.email === values.email)
+                 if(user.password === values.password){
+                     navigate('/userhome')
+
+                 }
+                 else{
+                   alert("Password Incorrect")
+                 }
+            }
+            catch(e)
+            {
+                alert("Email incorrect " + e)
+            }      
         },
         // validationSchema: {SignUpSchema},
     })
@@ -58,11 +66,12 @@ const Login = () => {
                          value = {values.password} />
                     <a href=''>Forgot Password?</a>
                     <br />
-                    <button
+                    <button type='submit'
                     >Login</button>
                 </form>
             </div>
         </div>
+
      );
 }
  

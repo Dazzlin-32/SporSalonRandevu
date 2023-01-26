@@ -1,5 +1,5 @@
-const data = {
-  user1: {
+export const data = [
+  {
     id: 0,
     name: "Ermira",
     surname: "Zenuni",
@@ -7,7 +7,7 @@ const data = {
     password: "123454",
     type: "user",
   },
-  user2: {
+  {
     id: 1,
     name: "Seyran",
     surname: "Khitilova",
@@ -15,7 +15,7 @@ const data = {
     password: "123123",
     type: "coach",
   },
-  user3: {
+  {
     id: 2,
     name: "Sekina",
     surname: "Sherif",
@@ -23,6 +23,4 @@ const data = {
     password: "121212",
     type: "admin",
   },
-};
-
-export default data;
+];

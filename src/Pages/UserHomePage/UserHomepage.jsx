@@ -5,59 +5,66 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import './Calender.css'
 import { useState } from 'react';
+import NavBar from '../../Components/NavBar';
+
 
 
 const UserHomepage = () => {
-    const events = [
+  const events = [
   {
-    id: 1,
-    title: 'Pilates',
-    start: '2023-01-23T08:00:00',
-    end: '2021-01-23T09:00:00',
+    groupId: "pilates",
+    title: "Pilates",
+    description: "Group",
+    startTime: "08:00:00",
+    endTime: "09:00:00",
+    daysOfWeek: [1],
+    startRecur: "2023-01-01",
+    endRecur: "2023-03-01",
   },
   {
-    id: 2,
-    title: 'KickBox',
-    start: '2023-01-25T08:00:00',
-    end: '2023-01-25T109:00:00',
+    groupId: "kickBok",
+    title: "KickBox",
+    startTime: "08:00:00",
+    endTime: "09:00:00",
+    daysOfWeek: [3],
+    startRecur: "2023-01-01",
+    endRecur: "2023-03-01",
   },
-  { 
-    id: 3, 
-    title: 'Zumba', 
-    start: '2023-01-28T10:00:00',
-    end: '2023-01-28T11:00:00',
- },
-    { 
-    id: 4, 
-    title: 'Fitness', 
-    start: '2023-01-24T12:00:00',
-    end: '2023-01-24T13:00:00', 
-},
-    { 
-    id: 5, 
-    title: 'Body Building', 
-    start: '2023-01-26T14:00:00',
-    end: '2023-01-26T15:00:00', 
-},
+  {
+    groupId: "zumba",
+    title: "Zumba",
+    startTime: "10:00:00",
+    endTime: "11:00:00",
+    daysOfWeek: [6],
+    startRecur: "2023-01-01",
+    endRecur: "2023-03-01",
+  },
+  {
+    groupId: "fitness",
+    title: "Fitness",
+    startTime: "12:00:00",
+    endTime: "13:00:00",
+    daysOfWeek: [2],
+    startRecur: "2023-01-01",
+    endRecur: "2023-03-01",
+  },
+  {
+    groupId: "bodyBuilding",
+    title: "Body Building",
+    startTime: "14:00:00",
+    endTime: "15:00:00",
+    daysOfWeek: [4],
+    startRecur: "2023-01-01",
+    endRecur: "2023-03-01",
+  },
 ];
     return ( 
         <div className={styles.Container}>
-            <div className={styles.nav}>
-                <div className="label">
-                    <label>XYZ Sport and Fitness</label>
-                </div>
-                <div className={styles.navbar}>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Notification</a></li>
-                        <li><a href="">Profile</a></li>
-                        <li><a href="">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div className={styles.body}>
-                <FullCalendar
-                
+           <NavBar/>
+                <div className={styles.body}>
+                  
+            
+                <FullCalendar                
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     initialView="timeGridWeek"
                     customButtons={{
@@ -66,18 +73,17 @@ const UserHomepage = () => {
                                 click: () => console.log('new event'),
                             },
                             }}
-                    headerToolbar={{
-                            center: 'timeGridWeek',
-                            }}
                     events={events}
                     eventColor = "#79A398"
                     eventClick={(e) =>alert(e.event.title + " Clicked")}
-                    height = '70%'
+                    expandRows = 'true'
+                    height= "100%"
                     slotMinTime="08:00:00"
                     slotMaxTime = "22:00:00"
                     
                     
                                 />
+            
             </div>
         </div>
      );
