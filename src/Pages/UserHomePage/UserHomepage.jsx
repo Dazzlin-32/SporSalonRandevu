@@ -3,65 +3,18 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import './Calender.css'
-import { useState } from 'react';
+import {useLocation} from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
-
+import {data} from '../../userapi';
 
 
 const UserHomepage = () => {
-  const events = [
-  {
-    groupId: "pilates",
-    title: "Pilates",
-    description: "Group",
-    startTime: "08:00:00",
-    endTime: "09:00:00",
-    daysOfWeek: [1],
-    startRecur: "2023-01-01",
-    endRecur: "2023-03-01",
-  },
-  {
-    groupId: "kickBok",
-    title: "KickBox",
-    startTime: "08:00:00",
-    endTime: "09:00:00",
-    daysOfWeek: [3],
-    startRecur: "2023-01-01",
-    endRecur: "2023-03-01",
-  },
-  {
-    groupId: "zumba",
-    title: "Zumba",
-    startTime: "10:00:00",
-    endTime: "11:00:00",
-    daysOfWeek: [6],
-    startRecur: "2023-01-01",
-    endRecur: "2023-03-01",
-  },
-  {
-    groupId: "fitness",
-    title: "Fitness",
-    startTime: "12:00:00",
-    endTime: "13:00:00",
-    daysOfWeek: [2],
-    startRecur: "2023-01-01",
-    endRecur: "2023-03-01",
-  },
-  {
-    groupId: "bodyBuilding",
-    title: "Body Building",
-    startTime: "14:00:00",
-    endTime: "15:00:00",
-    daysOfWeek: [4],
-    startRecur: "2023-01-01",
-    endRecur: "2023-03-01",
-  },
-];
+  const location = useLocation();
     return ( 
         <div className={styles.Container}>
            <NavBar/>
                 <div className={styles.body}>
+                  {console.log(data[location.state.id].events)}
                   
             
                 <FullCalendar                
@@ -73,7 +26,7 @@ const UserHomepage = () => {
                                 click: () => console.log('new event'),
                             },
                             }}
-                    events={events}
+                    events={data[location.state.id].events}
                     eventColor = "#79A398"
                     eventClick={(e) =>alert(e.event.title + " Clicked")}
                     expandRows = 'true'

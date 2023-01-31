@@ -1,20 +1,31 @@
+.bodyStyle{
+    background-color: #79a398;
+    background-size: contain;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .container{
-    width: auto;
-    height: 90%;
-    margin: 30px;
+    width: 90%;
+    height: 100%;
+    margin: 3em;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    background-color: #dca61e41;
+    background-color: #fffdfd;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .firstDiv{
     float: left;
     width: 100%;
     height: 500px;
     background-color: rgb(17, 18, 17);
-    color: wheat;
+    background-image: url('./loginpic.jpg');
+    background-size: cover;
+    color: white;
     
 }
 .firstDiv p{
@@ -54,6 +65,7 @@
     height: 25px;
     width: 100%;
     display: block;
+    background-color: #79a39800;
 }
 .form a{
     text-decoration: none;
@@ -64,7 +76,9 @@
 }
 
 .form button{
-    background-color:#79a398;
+    background-color:#6da798;
+    color: white;
+    border: 1px solid black;
     margin: 5px;
     width: 60%;
     border-radius: 10px;
