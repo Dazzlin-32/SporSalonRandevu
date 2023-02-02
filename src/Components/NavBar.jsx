@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Profile from '../Pages/Profile/Profile';
 import styles from '../Pages/UserHomePage/UserHomepage.module.css'
 import DropDown from './DropDown';
 
 class NavBar extends Component {
-    state = {  } 
     render() { 
         return (
              <div className={styles.nav}>
@@ -12,10 +13,10 @@ class NavBar extends Component {
                 </div>
                 <div className={styles.navbar}>
                     <ul>
-                        <li><a href="/userhome">Home</a></li>
-                        <li><a href="#DropDown">Notification</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                        <li><a href="/login">Logout</a></li>
+                        <li><Link to="/profile">Home</Link></li>
+                        <li><Link to="#DropDown">Notification</Link></li>
+                        <li><Link to="/profile" state={{id: this.props.value}}>Profile</Link></li>
+                        <li><Link to="/login">Logout</Link></li>
                     </ul>
                 </div>
             {/* <div id='Dropdown'>

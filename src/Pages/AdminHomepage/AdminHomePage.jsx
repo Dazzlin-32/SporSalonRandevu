@@ -1,4 +1,6 @@
-import styles from '../UserHomePage/UserHomepage.module.css'
+import styles from '../UserHomePage/UserHomepage.module.css';
+import Popup from 'reactjs-popup';
+import { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -8,10 +10,35 @@ import NavBar from '../../Components/NavBar';
 import {data} from '../../userapi';
 
 const AdminHomePage = () => {
+  const [popUp, setPopUp] = useState(false);
   const location = useLocation();
+  const [sportList, setSportList] = useState(data[location.state.id].events)
+
+  useEffect(
+    ()=>{
+      setSportList(data[location.state.id].events)
+    }
+
+  ,[]);
+
+  const individualButton = ()=>{
+    let sports = data[location.state.id].events
+    setSportList(sports.filter(sportList => sportList.type === 'individual'))
+    console.log(sportList)
+  }
+
+  const groupButton = ()=>{
+    let sports = data[location.state.id].events
+    setSportList(sports.filter(sports => sports.type === 'group'))
+    console.log(sportList)
+  }
+  const Modal = (e) => {
+    setPopUp(true); 
+  };
+  
     return ( 
         <div className={styles.Container}>
-           <NavBar/>
+           <NavBar value={location.state.id}/>
                 <div className={styles.body}>
                   {console.log(data[location.state.id].events)}
                   
@@ -20,14 +47,27 @@ const AdminHomePage = () => {
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     initialView="timeGridWeek"
                     customButtons={{
-                            new: {
-                                text: 'new',
-                                click: () => console.log('new event'),
-                            },
+                      individual: {
+                          text: 'Individual Sports',
+                          click: () =>{individualButton()},
+                      },
+                      group : {
+                        text: 'Group Sports',
+                      click: () => {groupButton()},
+                      },
+                      all: {
+                        text: 'All Sports',
+                        click: ()=>{setSportList(data[location.state.id].events)}
+                      }
                             }}
-                    events={data[location.state.id].events}
+                    headerToolbar = {
+                      {
+                        center: 'individual group all'
+                      }
+                    }
+                    events={sportList}
                     eventColor = "#79A398"
-                    eventClick={(e) =>alert(e.event.title + " Clicked")}
+                    eventClick={(e) =>{Modal(e)}}
                     expandRows = 'true'
                     height= "100%"
                     slotMinTime="08:00:00"
@@ -35,8 +75,15 @@ const AdminHomePage = () => {
                     
                     
                                 />
-            
+                
             </div>
+                 <Popup 
+                      trigger={popUp}
+                      modal
+                      position="right center"
+                      closeOnDocumentClick>
+                      <span> clicked! </span>
+                </Popup>                      
         </div>
      );
 }
