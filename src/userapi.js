@@ -8,7 +8,7 @@ export const data = [
     type: "user",
     events : [
       {
-        groupId: "kickBok",
+        groupId: "gkickBok",
         title: "KickBox G",
         startTime: "08:00:00",
         endTime: "09:00:00",
@@ -19,7 +19,7 @@ export const data = [
 
       },
       {
-        groupId: "kickBok",
+        groupId: "ikickBok",
         title: "KickBox I",
         startTime: "10:00:00",
         endTime: "11:00:00",
@@ -32,7 +32,7 @@ export const data = [
       },
       
       {
-        groupId: "fitness",
+        groupId: "ifitness",
         title: "Fitness I",
         startTime: "12:00:00",
         endTime: "13:00:00",
@@ -43,7 +43,7 @@ export const data = [
       },
       
       {
-        groupId: "bodyBuilding",
+        groupId: "ibodyBuilding",
         title: "Body Building I",
         startTime: "14:00:00",
         endTime: "15:00:00",
@@ -53,7 +53,7 @@ export const data = [
         type: 'individual'
       },
       {
-        groupId: "bodyBuilding",
+        groupId: "gbodyBuilding",
         title: "Body Building G",
         startTime: "14:00:00",
         endTime: "15:00:00",
@@ -73,7 +73,7 @@ export const data = [
     type: "coach",
     events : [
       {
-        groupId: "pilates",
+        groupId: "gpilates",
         title: "Pilates G",
         description: "Group",
         startTime: "08:00:00",
@@ -84,7 +84,7 @@ export const data = [
         type: 'group'
       },
       {
-        groupId: "pilates",
+        groupId: "ipilates",
         title: "Pilates I",
         description: "Group",
         startTime: "11:00:00",
@@ -95,7 +95,7 @@ export const data = [
         type: 'individual'
       },
       {
-        groupId: "kickBok",
+        groupId: "ikickBok",
         title: "KickBox I",
         startTime: "08:00:00",
         endTime: "09:00:00",
@@ -105,7 +105,7 @@ export const data = [
         type : "individual"
       },
       {
-        groupId: "kickBok",
+        groupId: "gkickBok",
         title: "KickBox G",
         startTime: "08:00:00",
         endTime: "09:00:00",
@@ -115,7 +115,7 @@ export const data = [
         type : "group"
       },
       {
-        groupId: "zumba",
+        groupId: "gzumba",
         title: "Zumba G",
         startTime: "10:00:00",
         endTime: "11:00:00",
@@ -125,7 +125,7 @@ export const data = [
         type : "group",
       },
       {
-        groupId: "fitness",
+        groupId: "gfitness",
         title: "Fitness G",
         startTime: "12:00:00",
         endTime: "13:00:00",
@@ -135,7 +135,7 @@ export const data = [
         type: "group",
       },
       {
-        groupId: "bodyBuilding",
+        groupId: "gbodyBuilding",
         title: "Body Building G",
         startTime: "14:00:00",
         endTime: "15:00:00",
@@ -155,7 +155,7 @@ export const data = [
     type: "admin",
     events:[
       {
-      groupId: "pilates",
+      groupId: "gpilates",
       title: "Pilates G",
       description: "Group",
       startTime: "08:00:00",
@@ -166,7 +166,7 @@ export const data = [
       type: 'group'
     },
     {
-      groupId: "pilates",
+      groupId: "ipilates",
       title: "Pilates I",
       description: "Group",
       startTime: "11:00:00",
@@ -177,7 +177,7 @@ export const data = [
       type: 'individual'
     },
     {
-      groupId: "kickBok",
+      groupId: "ikickBok",
       title: "KickBox I",
       startTime: "08:00:00",
       endTime: "09:00:00",
@@ -187,7 +187,7 @@ export const data = [
       type : "individual"
     },
     {
-      groupId: "kickBok",
+      groupId: "gkickBok",
       title: "KickBox G",
       startTime: "08:00:00",
       endTime: "09:00:00",
@@ -197,7 +197,7 @@ export const data = [
       type : "group"
     },
     {
-      groupId: "zumba",
+      groupId: "gzumba",
       title: "Zumba G",
       startTime: "10:00:00",
       endTime: "11:00:00",
@@ -207,7 +207,7 @@ export const data = [
       type : "group",
     },
     {
-      groupId: "fitness",
+      groupId: "gfitness",
       title: "Fitness G",
       startTime: "12:00:00",
       endTime: "13:00:00",
@@ -217,7 +217,7 @@ export const data = [
       type: "group",
     },
     {
-      groupId: "bodyBuilding",
+      groupId: "gbodyBuilding",
       title: "Body Building G",
       startTime: "14:00:00",
       endTime: "15:00:00",

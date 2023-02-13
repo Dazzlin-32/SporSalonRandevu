@@ -8,11 +8,16 @@ import interactionPlugin from '@fullcalendar/interaction';
 import {useLocation} from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
 import {data} from '../../userapi';
+import CustomPopup from '../../Components/CustomPopup';
+import { appointment } from '../../appointment';
+
 
 const AdminHomePage = () => {
-  const [popUp, setPopUp] = useState(false);
+  const [events, setEvents] =  useState('');
+  const [sportList, setSportList] = useState('');
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const location = useLocation();
-  const [sportList, setSportList] = useState(data[location.state.id].events)
 
   useEffect(
     ()=>{
@@ -24,23 +29,22 @@ const AdminHomePage = () => {
   const individualButton = ()=>{
     let sports = data[location.state.id].events
     setSportList(sports.filter(sportList => sportList.type === 'individual'))
-    console.log(sportList)
+    
   }
 
   const groupButton = ()=>{
     let sports = data[location.state.id].events
     setSportList(sports.filter(sports => sports.type === 'group'))
-    console.log(sportList)
+    
   }
   const Modal = (e) => {
-    setPopUp(true); 
+    setOpen(o => !o)
+    setEvents(e.event )
   };
-  
     return ( 
         <div className={styles.Container}>
            <NavBar value={location.state.id}/>
                 <div className={styles.body}>
-                  {console.log(data[location.state.id].events)}
                   
             
                 <FullCalendar                
@@ -65,6 +69,7 @@ const AdminHomePage = () => {
                         center: 'individual group all'
                       }
                     }
+                    editable= "true"
                     events={sportList}
                     eventColor = "#79A398"
                     eventClick={(e) =>{Modal(e)}}
@@ -75,15 +80,30 @@ const AdminHomePage = () => {
                     
                     
                                 />
+                    <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+                      <div className="modal">
+                        <a className="close" onClick={closeModal}>
+                          &times;
+                        </a>
+                        <h2>{events.title}</h2>
+                        <h3> Type: {appointment.find(appointment => appointment.groupId === events.groupId).type}</h3>
+                        <h3>Coach: {appointment.find(appointment => appointment.groupId === events.groupId).coach}</h3>
+                        <h3>Number of Trainees : {appointment.find(appointment => appointment.groupId === events.groupId).trainee.length}</h3>
+                        <h3>Limit : {appointment.find(appointment => appointment.groupId === events.groupId).number}</h3>
+                        
+                        <br />
+                        <br />
+                        <button onClick={closeModal}>Cancel</button>
+                      </div>
+                    </Popup>
+
+                    <CustomPopup />
+
+
+                  
                 
             </div>
-                 <Popup 
-                      trigger={popUp}
-                      modal
-                      position="right center"
-                      closeOnDocumentClick>
-                      <span> clicked! </span>
-                </Popup>                      
+                      
         </div>
      );
 }

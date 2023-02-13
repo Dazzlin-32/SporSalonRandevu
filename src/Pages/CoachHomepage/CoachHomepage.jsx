@@ -6,12 +6,16 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {useLocation} from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
-
+import Popup from 'reactjs-popup';
 import {data} from '../../userapi';
+import { appointment } from '../../appointment';
 
 const CoachHomePage = () => {
+  const [events, setEvents] =  useState('');
+  const [sportList, setSportList] = useState('');
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const location = useLocation();
-  const [sportList, setSportList] = useState(data[location.state.id].events)
 
   useEffect(
     ()=>{
@@ -23,19 +27,20 @@ const CoachHomePage = () => {
   const individualButton = ()=>{
     let sports = data[location.state.id].events
     setSportList(sports.filter(sportList => sportList.type === 'individual'))
-    console.log(sportList)
   }
 
   const groupButton = ()=>{
     let sports = data[location.state.id].events
     setSportList(sports.filter(sports => sports.type === 'group'))
-    console.log(sportList)
   }
+  const Modal = (e) => {
+    setOpen(o => !o)
+    setEvents(e.event )
+  };
     return ( 
         <div className={styles.Container}>
            <NavBar value={location.state.id}/>
                 <div className={styles.body}>
-                  {console.log(data[location.state.id].events)}
                   
             
                 <FullCalendar                
@@ -62,7 +67,7 @@ const CoachHomePage = () => {
                     }
                     events={sportList}
                     eventColor = "#79A398"
-                    eventClick={(e) =>alert(e.event.title + " Clicked")}
+                    eventClick={(e) =>{Modal(e)}}
                     expandRows = 'true'
                     height= "100%"
                     slotMinTime="08:00:00"
@@ -70,6 +75,20 @@ const CoachHomePage = () => {
                     
                     
                                 />
+                  <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+                      <div className="modal">
+                        <a className="close" onClick={closeModal}>
+                          &times;
+                        </a>
+                        <h2>{events.title}</h2>
+                        <h3> Type: {appointment.find(appointment => appointment.groupId === events.groupId).type}</h3>
+                        <h3>Number of Trainees : {appointment.find(appointment => appointment.groupId === events.groupId).trainee.length}</h3>
+                        <h3>Limit : {appointment.find(appointment => appointment.groupId === events.groupId).number}</h3>
+                        <br />
+                        <br />
+                        <button onClick={closeModal}>Cancel</button>
+                      </div>
+                    </Popup>
             
             </div>
         </div>
