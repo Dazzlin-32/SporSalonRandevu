@@ -19,6 +19,8 @@
 .profile p{
     font-size: 23px;
     text-align: left;
+    display: flex;
+    align-items: center;
 }
 .circle{
     background-color: #f3eded;
@@ -29,5 +31,28 @@
     position: relative;
     top: 0;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+.profile img {
+    width: 150px;
+    height: 150px;
+}
+.profile p{
+    font-size: 18px;
+    color: #000000bd;
+    float: left;
+    margin: 15px;
+    height: fit-content;
+    text-align: center;
+}
+.moto {
+    float: left;
+    margin-top: 10px;
+    font-size: 60px;
+    font-weight: bolder;
+    display: block;
+    background-color:#79a398d5;
+    border-radius: 25px;
+    padding: 30px;
     
 }

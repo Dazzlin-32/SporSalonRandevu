@@ -12,7 +12,7 @@ export const appointment = [
         title: "Pilates I",
         type: 'group',
         coach: "Seyran Khitilova",
-        number : 0,
+        number : 1,
         trainee: [        ]
     },
     {
@@ -20,7 +20,7 @@ export const appointment = [
         title: "KickBox I",
         type: 'group',
         coach: "Seyran Khitilova",
-        number : 0,
+        number : 1,
         trainee: [        ]
     },
     {
@@ -52,7 +52,7 @@ export const appointment = [
         title: "Fitness I",
         type: 'individual',
         coach: "Seyran Khitilova",
-        number : 0,
+        number : 1,
         trainee: [        ]
     },
     {
@@ -60,7 +60,7 @@ export const appointment = [
         title: "Body Building G",
         type: 'group',
         coach: "Seyran Khitilova",
-        number : 0,
+        number : 1,
         trainee: [        ]
     },
     {
@@ -68,7 +68,7 @@ export const appointment = [
         title: "Body Building I",
         type: 'individual',
         coach: "Seyran Khitilova",
-        number : 0,
+        number : 1,
         trainee: [        ]
     },
     {

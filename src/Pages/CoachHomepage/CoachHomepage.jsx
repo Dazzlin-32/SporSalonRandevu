@@ -11,15 +11,22 @@ import {data} from '../../userapi';
 import { appointment } from '../../appointment';
 
 const CoachHomePage = () => {
+  const [clickedSport, setClickedSport] = useState({})
   const [events, setEvents] =  useState('');
   const [sportList, setSportList] = useState('');
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
   const location = useLocation();
+  const [sportType,setSportType] = useState('') 
+  const [trainees,setTrainees] = useState([]) 
+  const [limit,setLimit] = useState(0) 
+ 
 
   useEffect(
     ()=>{
+      console.log(data[location.state.id].events)
       setSportList(data[location.state.id].events)
+      console.log(sportList)
     }
 
   ,[]);
@@ -34,9 +41,16 @@ const CoachHomePage = () => {
     setSportList(sports.filter(sports => sports.type === 'group'))
   }
   const Modal = (e) => {
-    setOpen(o => !o)
     setEvents(e.event )
+    setOpen(o => !o)
+    popupInfo(e)
   };
+  const popupInfo = (e)=> {
+    console.log(e.event.extendedProps)
+    setSportType(e.event.extendedProps.type.toUpperCase())
+    setTrainees(e.event.extendedProps.trainees)
+    setLimit(e.event.extendedProps.limit)
+  }
     return ( 
         <div className={styles.Container}>
            <NavBar value={location.state.id}/>
@@ -80,10 +94,12 @@ const CoachHomePage = () => {
                         <a className="close" onClick={closeModal}>
                           &times;
                         </a>
-                        <h2>{events.title}</h2>
-                        <h3> Type: {appointment.find(appointment => appointment.groupId === events.groupId).type}</h3>
-                        <h3>Number of Trainees : {appointment.find(appointment => appointment.groupId === events.groupId).trainee.length}</h3>
-                        <h3>Limit : {appointment.find(appointment => appointment.groupId === events.groupId).number}</h3>
+                        <h2>{events.title}</h2>{
+                          
+                        }
+                        <h3> Type: {sportType}</h3>
+                        <h3>Number of Trainees : {trainees.length}</h3>
+                        <h3>Limit : {limit}</h3>
                         <br />
                         <br />
                         <button onClick={closeModal}>Cancel</button>

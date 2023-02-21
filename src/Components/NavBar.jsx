@@ -13,7 +13,6 @@ class NavBar extends Component {
                 </div>
                 <div className={styles.navbar}>
                     <ul>
-                        <li><Link to="/profile">Home</Link></li>
                         <li><Link to="#DropDown">Notification</Link></li>
                         <li><Link to="/profile" state={{id: this.props.value}}>Profile</Link></li>
                         <li><Link to="/login">Logout</Link></li>

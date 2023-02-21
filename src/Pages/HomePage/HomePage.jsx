@@ -8,9 +8,7 @@ const HomePage = () => {
                 <div className="Container">
                     <div className="Container-header ">
                         <button type='button'
-                                onClick={()=> {}}> Contact Us</button>
-                        <button type='button'
-                                onClick={()=> {}}>Log In</button>
+                                onClick={()=> {navigate('/login')}}>Log In</button>
                     </div>
                     <div className="Container-body">
                         <h2>REACH YOUR LIMITS <br/> AND GET TO THE <br/> NEXT LEVEL</h2>

@@ -7,18 +7,22 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {useLocation} from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
-import {data} from '../../userapi';
 import CustomPopup from '../../Components/CustomPopup';
-import { appointment } from '../../appointment';
+import {data} from '../../userapi';
 
 
 const AdminHomePage = () => {
-  const [events, setEvents] =  useState('');
-  const [sportList, setSportList] = useState('');
-  const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
-  const location = useLocation();
-
+// const [clickedSport, setClickedSport] = useState('') // For listing details in the modal
+  const [events, setEvents] =  useState(''); // For listing events in calender
+  const [sportList, setSportList] = useState(''); // Fro event listing in individiual group and all buttons
+  const [open, setOpen] = useState(false);// For Modal opening
+  const closeModal = () => setOpen(false); // For <odal Closing
+  const location = useLocation(); // For accesing the params
+  const [sportType,setSportType] = useState('') //For modal details
+  const [trainees,setTrainees] = useState([])  //For modal details
+  const [limit,setLimit] = useState(0)  //For modal details
+  const [coach, setCoach] = useState('') // For modal
+ 
   useEffect(
     ()=>{
       setSportList(data[location.state.id].events)
@@ -39,8 +43,16 @@ const AdminHomePage = () => {
   }
   const Modal = (e) => {
     setOpen(o => !o)
-    setEvents(e.event )
+    setEvents(e.event)
+    popupInfo(e)
   };
+  const popupInfo = (e)=> {
+    console.log(e.event.extendedProps)
+    setSportType(e.event.extendedProps.type.toUpperCase())
+    setTrainees(e.event.extendedProps.trainees)
+    setLimit(e.event.extendedProps.limit)
+    setCoach(e.event.extendedProps.coach)
+  }
     return ( 
         <div className={styles.Container}>
            <NavBar value={location.state.id}/>
@@ -86,11 +98,10 @@ const AdminHomePage = () => {
                           &times;
                         </a>
                         <h2>{events.title}</h2>
-                        <h3> Type: {appointment.find(appointment => appointment.groupId === events.groupId).type}</h3>
-                        <h3>Coach: {appointment.find(appointment => appointment.groupId === events.groupId).coach}</h3>
-                        <h3>Number of Trainees : {appointment.find(appointment => appointment.groupId === events.groupId).trainee.length}</h3>
-                        <h3>Limit : {appointment.find(appointment => appointment.groupId === events.groupId).number}</h3>
-                        
+                        <h3>Coach : {coach}</h3>
+                        <h3> Type: {sportType}</h3>
+                        <h3>Number of Trainees : {trainees.length}</h3>
+                        <h3>Limit : {limit}</h3>
                         <br />
                         <br />
                         <button onClick={closeModal}>Cancel</button>

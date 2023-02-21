@@ -7,10 +7,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {useLocation} from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
-import {data} from '../../userapi';
 import CustomPopup from '../../Components/CustomPopup';
-import { appointment } from '../../appointment';
-
+import {data, bookUser} from '../../userapi';
 
 const UserHomepage = () => {
   const [events, setEvents] =  useState('');
@@ -24,7 +22,7 @@ const UserHomepage = () => {
       setSportList(data[location.state.id].events)
     }
 
-  ,[]);
+  ,[data[location.state.id]]);
 
   const individualButton = ()=>{
     let sports = data[location.state.id].events
@@ -42,13 +40,10 @@ const UserHomepage = () => {
     setEvents(e.event )
   };
   const makeAppointment = (id) =>{
-    console.log(data[location.state.id].name)
-    
-    !appointment.find(appointment => appointment.groupId === id).trainee.includes("Sekina")?
-    appointment.find(appointment => appointment.groupId === id).trainee.push(data[location.state.id].name):
-    alert("You have already booked!");
+    let userId = location.state.id
    // console.log(appointment.find(appointment => appointment.groupId === id).trainee.find(data[location.state.id].name))
-    closeModal();
+   bookUser(events.groupId,userId)
+  closeModal();
   
 }
 
@@ -97,7 +92,6 @@ const UserHomepage = () => {
                           &times;
                         </a>
                         <h2>Do you want to take appointment of {events.title}?</h2>
-                        <h4>Clicked!</h4>
                         <br />
                         <br />
 
