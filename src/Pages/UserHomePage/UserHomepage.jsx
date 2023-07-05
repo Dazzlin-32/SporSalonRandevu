@@ -19,10 +19,12 @@ const UserHomepage = () => {
 
   useEffect(
     ()=>{
+      console.log(data[location.state.id].events)
       setSportList(data[location.state.id].events)
+      console.log(sportList)
     }
 
-  ,[data[location.state.id]]);
+  ,[]);
 
   const individualButton = ()=>{
     let sports = data[location.state.id].events

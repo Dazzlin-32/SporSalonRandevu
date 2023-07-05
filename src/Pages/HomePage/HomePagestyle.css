@@ -64,7 +64,7 @@
 }
 
 .modal{
-    background-color:#f5c95a;
+    background-color:rgba(245, 201, 91, 0.872);
     color: rgba(255, 255, 255, 0.838);
     height: max-content;
     width: 550px;
@@ -73,7 +73,7 @@
     border-radius: 25px;
     text-align: center;
     margin: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 .modal button {
     background-color: #79A398;
